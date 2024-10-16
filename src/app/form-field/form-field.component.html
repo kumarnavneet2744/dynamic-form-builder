@@ -1,0 +1,17 @@
+<div [formGroup]="form">
+    <label>{{ field.label }}</label>
+    <input *ngIf="field.type === 'text'" [formControlName]="field.label" [placeholder]="field.placeholder" [attr.required]="isRequired"/>
+    <textarea *ngIf="field.type === 'textarea'" [formControlName]="field.label" [placeholder]="field.placeholder"></textarea>
+    <select *ngIf="field.type === 'dropdown'" [formControlName]="field.label">
+      <option *ngFor="let option of ['Option 1', 'Option 2', 'Option 3']" [value]="option">{{ option }}</option>
+    </select>
+    <input *ngIf="field.type === 'checkbox'" type="checkbox" [formControlName]="field.label" />
+    <div *ngIf="field.type === 'radio'">
+      <label>
+        <input type="radio" [formControlName]="field.label" [value]="field.label" />
+        {{ field.label }}
+      </label>
+    </div>
+    <button (click)="removeField()">Remove</button>
+  </div>
+  
